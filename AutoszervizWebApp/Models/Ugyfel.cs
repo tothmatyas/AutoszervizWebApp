@@ -8,7 +8,6 @@ namespace AutoszervizWebApp.Models
         public int Id { get; set; }
         
         [Required]
-        [StringLength(100)]
         public string Nev { get; set; }
         [StringLength(20)]
         public string Telefon { get; set; }
