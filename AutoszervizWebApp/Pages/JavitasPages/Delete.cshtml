@@ -1,0 +1,18 @@
+@page
+@model AutoszervizWebApp.Pages.JavitasPages.DeleteModel
+
+<h1>Javítás törlése</h1>
+<h3>Biztosan törlöd ezt a javítást?</h3>
+<dl class="row">
+	<dt class="col-sm-2">Ügyfél</dt>
+	<dd class="col-sm-10">@Model.Javitas.Ugyfel?.Nev</dd>
+	<dt class="col-sm-2">Rendszám</dt>
+	<dd class="col-sm-10">@Model.Javitas.Rendszam</dd>
+	<dt class="col-sm-2">Leírás</dt>
+	<dd class="col-sm-10">@Model.Javitas.Leiras</dd>
+</dl>
+<form method="post">
+	<input type="hidden" name="id" value="@Model.Javitas.Id" />
+	<button type="submit" class="btn btn-danger">Törlés</button>
+	<a asp-page="/UgyfelPages/Index" class="btn btn-secondary">Mégse</a>
+</form>

@@ -1,0 +1,27 @@
+@page
+@model AutoszervizWebApp.Pages.JavitasPages.CreateModel
+
+<h1>Javítás létrehozása</h1>
+<form method="post">
+	<div asp-validation-summary="All" class="text-danger"></div>
+	<input asp-for="Javitas.Allapot" type="hidden" />
+	<input asp-for="Javitas.FelvetelDatuma" type="hidden" />
+	<label asp-for="Javitas.UgyfelId">Ügyfél</label>
+	<select asp-for="Javitas.UgyfelId" asp-items="Model.Ugyfelek" class="form-control">
+		<option value="">-- Válasszon ügyfelet --</option>
+	</select>
+	<span asp-validation-for="Javitas.UgyfelId" class="text-danger"></span>
+
+	<label asp-for="Javitas.Rendszam">Rendszám</label>
+	<input asp-for="Javitas.Rendszam" class="form-control" />
+	<span asp-validation-for="Javitas.Rendszam" class="text-danger"></span>
+
+	<label asp-for="Javitas.Leiras">Leírás</label>
+	<input asp-for="Javitas.Leiras" class="form-control" />
+	<span asp-validation-for="Javitas.Leiras" class="text-danger"></span>
+	<label asp-for="Javitas.Koltseg">Költség</label>
+	<input asp-for="Javitas.Koltseg" class="form-control" />
+	<span asp-validation-for="Javitas.Koltseg" class="text-danger"></span>
+
+	<button type="submit" class="btn btn-primary mt-3">Mentés</button>
+</form>

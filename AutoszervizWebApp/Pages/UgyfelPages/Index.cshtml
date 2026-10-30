@@ -1,0 +1,69 @@
+@page
+@model AutoszervizWebApp.Pages.UgyfelPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Ügyfél létrehozása</a>
+    <a asp-page="/JavitasPages/Create" class="btn btn-primary">Javítás létrehozása</a>
+</p>
+<h2>Ügyfelek</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ugyfel[0].Nev)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ugyfel[0].Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ugyfel[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ugyfel[0].Javitasok)
+            </th>
+            <th></th>
+        </tr>
+            
+    </thead>
+    <tbody>
+@foreach (var item in Model.Ugyfel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Nev)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Email)
+            </td>
+            <td>
+				@foreach (var javitas in item.Javitasok)
+                {
+                    <div>@javitas.Leiras</div>
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<h2>Javítások</h2>
+<table class="table">
+    <tr><th>Ügyfél</th><th>Rendszám</th><th>Leírás</th><th>Állapot</th><th></th></tr>
+    @foreach (var javitas in Model.Javitasok)
+    {
+        <tr><td>@javitas.Ugyfel?.Nev</td><td>@javitas.Rendszam</td><td>@javitas.Leiras</td><td>@javitas.Allapot</td><td><a asp-page="/JavitasPages/Edit" asp-route-id="@javitas.Id">Edit</a> | <a asp-page="/JavitasPages/Delete" asp-route-id="@javitas.Id">Delete</a></td></tr>
+    }
+</table>
