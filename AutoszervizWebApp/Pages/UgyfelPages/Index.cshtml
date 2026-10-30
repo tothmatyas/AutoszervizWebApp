@@ -60,6 +60,16 @@
 </table>
 
 <h2>Javítások</h2>
+<form method="get" class="mb-3">
+    <select name="allapot" class="form-select d-inline w-auto">
+        <option value="">Minden állapot</option>
+        @foreach (var allapot in Model.Allapotok)
+        {
+            <option value="@allapot" selected="@(allapot == Model.KivalasztottAllapot ? "selected" : null)">@allapot</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Szűrés</button>
+</form>
 <table class="table">
     <tr><th>Ügyfél</th><th>Rendszám</th><th>Leírás</th><th>Állapot</th><th></th></tr>
     @foreach (var javitas in Model.Javitasok)

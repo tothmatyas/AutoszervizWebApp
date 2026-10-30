@@ -32,6 +32,9 @@ public class EditModel : PageModel
         if (allapot is "Felvéve" or "Folyamatban" or "Kész")
             Javitas.Allapot = allapot;
 
+        if (Javitas.Allapot == "Kész" && Javitas.Koltseg == 0)
+            ModelState.AddModelError("Javitas.Koltseg", "A javítás csak 0-nál nagyobb költséggel állítható kész állapotba.");
+
         if (!ModelState.IsValid)
         {
             await UgyfelekBetolteseAsync();
